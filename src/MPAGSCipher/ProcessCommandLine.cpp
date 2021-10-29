@@ -1,4 +1,5 @@
 #include "ProcessCommandLine.hpp"
+#include "CipherMode.hpp"
 
 #include <iostream>
 #include <string>
@@ -65,9 +66,9 @@ bool processCommandLine(const std::vector<std::string>& cmdLineArgs,
                 ++i;
             }
         } else if (cmdLineArgs[i] == "--encrypt") {
-            settings.encrypt = true;
+            settings.cipherMode = CipherMode::Encrypt;
         } else if (cmdLineArgs[i] == "--decrypt") {
-            settings.encrypt = false;
+            settings.cipherMode = CipherMode::Decrypt;
         } else {
             // Have encoutered an unknown flag, output an error message,
             // set the flag to indicate the error and terminate the loop

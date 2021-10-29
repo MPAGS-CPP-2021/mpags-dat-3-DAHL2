@@ -1,4 +1,5 @@
 #include "CaesarCipher.hpp"
+#include "CipherMode.hpp"
 #include "ProcessCommandLine.hpp"
 #include "TransformChar.hpp"
 
@@ -15,12 +16,12 @@ int main(int argc, char* argv[])
 
     // Options that might be set by the command-line arguments
     ProgramSettings settings{
-        false,    // helpRequested
-        false,    // versionRequested
-        "",       // inputFile
-        "",       // outputFile
-        "",       // cipherKey
-        true      // encrypt
+        false,                 // helpRequested
+        false,                 // versionRequested
+        "",                    // inputFile
+        "",                    // outputFile
+        "",                    // cipherKey
+        CipherMode::Encrypt    // Encrypt/decrypt
     };
 
     // Process command line arguments
@@ -101,7 +102,7 @@ int main(int argc, char* argv[])
     CaesarCipher Caesar(settings.cipherKey);
 
     // Run the Caesar cipher (using the specified key and encrypt/decrypt flag) on the input text
-    std::string outputText{Caesar.applyCipher(inputText, settings.encrypt)};
+    std::string outputText{Caesar.applyCipher(inputText, settings.cipherMode)};
 
     // Output the encrypted/decrypted text to stdout/file
     if (!settings.outputFile.empty()) {
