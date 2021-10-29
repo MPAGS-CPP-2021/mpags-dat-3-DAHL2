@@ -9,7 +9,9 @@ CaesarCipher::CaesarCipher(const std::size_t cipherKey) : key_{cipherKey}
 
 CaesarCipher::CaesarCipher(const std::string cipherKey)
 {
-    key_ = std::stoul(cipherKey);
+    if (validateKey(cipherKey)) {
+        key_ = std::stoul(cipherKey);
+    }
 }
 
 bool CaesarCipher::validateKey(const std::string testKey)
