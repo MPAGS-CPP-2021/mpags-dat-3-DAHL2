@@ -3,15 +3,51 @@
 #include <iostream>
 #include <string>
 
-CaesarCipher::CaesarCipher(const std::size_t cipherKey) : key_{cipherKey}
+CaesarCipher::CaesarCipher(const std::size_t cipherKey) :
+    // Only need to keep truncated version for Caesar cipher
+    key_{cipherKey % alphabetSize_}
 {
 }
 
 CaesarCipher::CaesarCipher(const std::string cipherKey)
 {
     if (validateKey(cipherKey)) {
-        key_ = std::stoul(cipherKey);
+        // Only need to keep truncated version for Caesar cipher
+        key_ = std::stoul(cipherKey) % alphabetSize_;
     }
+}
+
+std::string CaesarCipher::applyCipher(const std::string message,
+                                      const bool encrypt)
+{
+    // Create the output string
+    std::string outputText;
+
+    // Loop over the input text
+    char processedChar{'x'};
+    for (const auto& origChar : message) {
+        // For each character in the input text, find the corresponding position in
+        // the alphabet by using an indexed loop over the alphabet container
+        for (size_t i{0}; i < alphabetSize_; ++i) {
+            if (origChar == alphabet_[i]) {
+                // Apply the appropriate shift (depending on whether we're encrypting
+                // or decrypting) and determine the new character
+                // Can then break out of the loop over the alphabet
+                if (encrypt) {
+                    processedChar = alphabet_[(i + key_) % alphabetSize_];
+                } else {
+                    processedChar =
+                        alphabet_[(i + alphabetSize_ - key_) % alphabetSize_];
+                }
+                break;
+            }
+        }
+
+        // Add the new character to the output text
+        outputText += processedChar;
+    }
+
+    return outputText;
 }
 
 bool CaesarCipher::validateKey(const std::string testKey)

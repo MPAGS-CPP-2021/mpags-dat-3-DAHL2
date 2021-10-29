@@ -1,3 +1,6 @@
+// DEPRECATED
+// Functionality now contained withing CaesarCipher class
+
 #include "RunCaesarCipher.hpp"
 
 #include <string>
