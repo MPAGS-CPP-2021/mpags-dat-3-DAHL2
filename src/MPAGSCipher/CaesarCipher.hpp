@@ -9,7 +9,8 @@ class CaesarCipher {
     explicit CaesarCipher(const std::size_t cipherKey);
     explicit CaesarCipher(const std::string cipherKey);
 
-    std::string applyCipher(const std::string message, const bool encrypt);
+    std::string applyCipher(const std::string message,
+                            const bool encrypt) const;
 
     static bool validateKey(const std::string testKey);
 

@@ -18,7 +18,7 @@ CaesarCipher::CaesarCipher(const std::string cipherKey)
 }
 
 std::string CaesarCipher::applyCipher(const std::string message,
-                                      const bool encrypt)
+                                      const bool encrypt) const
 {
     // Create the output string
     std::string outputText;
