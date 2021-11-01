@@ -14,6 +14,16 @@ add_executable(testCatch testCatch.cpp)
 target_link_libraries(testCatch Catch)
 add_test(NAME test-catch COMMAND testCatch)
 
+# Test CaesarCipher
+add_executable(testCaesarCipher testCaesarCipher.cpp)
+target_link_libraries(testCaesarCipher MPAGSCipher Catch)
+add_test(NAME test-caesarcipher COMMAND testCaesarCipher)
+
+# Test ProcessCommandLine
+add_executable(testProcessCommandLine testProcessCommandLine.cpp)
+target_link_libraries(testProcessCommandLine MPAGSCipher Catch)
+add_test(NAME test-processcommandline COMMAND testProcessCommandLine)
+
 # Test TransformChar
 add_executable(testTransformChar testTransformChar.cpp)
 target_link_libraries(testTransformChar MPAGSCipher Catch)
