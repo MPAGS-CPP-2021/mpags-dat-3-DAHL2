@@ -1,4 +1,7 @@
 # Lines beginning with a '#' are comments
+# VSCode settings
+.vscode/
+
 # Text Editor Temp Files
 *~
 *.swp

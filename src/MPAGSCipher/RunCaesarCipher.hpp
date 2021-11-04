@@ -1,3 +1,6 @@
+// DEPRECATED
+// Functionality now contained withing CaesarCipher class
+
 #ifndef MPAGSCIPHER_RUNCAESARCIPHER_HPP
 #define MPAGSCIPHER_RUNCAESARCIPHER_HPP
 
